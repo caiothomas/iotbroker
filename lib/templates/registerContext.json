@@ -1,0 +1,65 @@
+{
+  "properties": {
+    "contextRegistrations": {
+      "description": "The objects the request is applied to.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "entities": {
+            "type": "array",
+            "required": false,
+            "items": {
+              "type": "object",
+              "properties": {
+                  "type": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "isPattern": {
+                    "type": "string",
+                    "required": false                    
+                  },
+                  "id": {
+                    "type": "string",
+                    "required": true
+                  }                
+              }
+            }
+          },                    
+          "attributes": {
+            "type": "array",
+            "required": false,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "required": true
+                },
+                "type": {
+                  "type": "string",
+                  "required": true
+                },
+                "value": {
+                  "type": "any",
+                  "required": false
+                }
+              }
+            }
+          },
+          "providingApplication": {
+            "description": "Address to redirect the request (http://ip:port).",
+            "type": "string",
+            "required": true              
+          }            
+        }
+      },
+      "required": true
+    }
+  },
+  "duration" : {
+    "description": "The duration element sets the duration of the registration so after that time has passed it can be considered as expired.",
+    "type": "string"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "title": "Entity",
+  "description": "Payload for entity provisioning",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "entities": {
+      "type": "array",
+      "id": "entities",
+      "required": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Name of type of Entity",
+            "type": "string",
+            "required": true            
+          },
+          "id": {
+            "description": "Id of the target entity",
+            "type": "string",
+            "required": true                                    
+          },
+          "providingApplication": {
+            "description": "Address of providing Application",
+            "type": "string",
+            "required": true                        
+          },          
+          "isPattern": {
+            "description": "IsPattern of the target entity",
+            "type": "string",
+            "required": false                                    
+          },          
+          "duration": {
+            "description": "Time zone where the device is located",
+            "type": "string",
+            "required": false                        
+          },
+          "registrationId": {
+            "description": "Registration Id of the target entity",
+            "type": "string",
+            "required": false                        
+          }
+        }
+      }
+    }
+  }
+}
