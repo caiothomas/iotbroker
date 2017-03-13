@@ -44,7 +44,7 @@ config.resource = {
  *             from the 'mongoDb' configuration property.
  */
 config.EntityRegistry = {
-    type: 'memory'
+    type: 'mongodb'
 };
 
 config.mongodb = {
@@ -62,7 +62,7 @@ config.ssl = {
      * This flag activates the HTTPS protocol in the server. The endpoint always listen to the indicated port
      * independently of the chosen protocol.
      */
-    active: true,
+    active: false,
 
     /**
      * Key file to use for codifying the HTTPS requests. Only mandatory when the flag active is true.
@@ -143,6 +143,15 @@ config.dieOnRedirectError = false;
  * authenticate itself against Keystone (due to an expired token).
  */
 config.maxQueuedClients = 1000;
+
+
+config.middlewares = {
+    require: 'lib/plugins/figuardian',
+    functions: [
+        'execute'
+    ]
+};
+
 
 /**
  * Default log level. Can be one of: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'

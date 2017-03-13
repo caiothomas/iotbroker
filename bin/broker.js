@@ -35,17 +35,31 @@ function doActivate(newConfig) {
 
         registry = require('../lib/entity/entityRegistryMemory');
     }
-
+    
+    
+    var proxyObj = {
+        server: null,
+        adminServer: null,
+        middlewares: []
+    };        
+    
     config.setRegistry(registry);
+    
+    console.log('Loading middlewares',proxyObj.middlewares);      
+    module = require('../' + config.getConfig().middlewares.require);
+
+    for (var i in  config.getConfig().middlewares.functions) {
+        console.log(module[config.getConfig().middlewares.functions[i]]);
+        proxyObj.middlewares.push(module[config.getConfig().middlewares.functions[i]]);
+    }                 
     
     async.series([
         db.configureDb,
-        apply(proxy.start),
-    ], function(error, proxyObj) {
+        apply(proxy.start, proxyObj),
+    ], function(error, proxyObj) {        
         if (error) {
             process.exit();
         } else {
-            console.log('Loading middlewares');      
             console.log('Server started');
         }
     });    
