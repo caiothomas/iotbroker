@@ -152,7 +152,16 @@ config.middlewares = {
     ]
 };
 
-
+config.figuardian = {
+    url: 'http://localhost/orion/figuardian.php',
+    ssl: {
+        active: false,
+        keyFile: 'certificados/figuardian/key.pem',
+        certFile: 'certificados/figuardian/cert.pem',
+        ca: 'certificados/figuardian/cert.pem',
+        rejectUnauthorized: true
+    }
+};
 /**
  * Default log level. Can be one of: 'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL'
  */
