@@ -44,7 +44,7 @@ config.resource = {
  *             from the 'mongoDb' configuration property.
  */
 config.EntityRegistry = {
-    type: 'mongodb'
+    type: 'memory'
 };
 
 config.mongodb = {
@@ -78,43 +78,29 @@ config.ssl = {
     requestCert: true,
     rejectUnauthorized: true     
 }
-
-
-// Access Control configuration
-//--------------------------------------------------
-/**
- * This options can be used to configure the address and options of the Access Control, responsible of the request
- * validation.
- */
-config.access = {
-    /**
-     * Indicates whether the access control validation should be enabled. Defaults to false.
-     */
-    disable: true,
-
-    /**
-     * Protocol to use to access the Access Control.
-     */
-    protocol: 'http',
-    /**
-     * Host where the Access Control is located.
-     */
-    host: 'localhost',
-    /**
-     * Port where the Access Control is listening.
-     */
-    port: 7070,
-    /**
-     * Path of the authentication action.
-     */
-    path: '/pdp/v3'
-}
+/*
+config.authentication = {
+    enable: true,
+    module: 'figuardian',
+    retries: 3,
+    cacheTTLs: {
+        users: 5,
+    },
+    options: {
+        protocol: 'http',
+        host: 'localhost',
+        port: 80,
+        path: '/orion/token.php'
+    }
+};
+*/
 
 config.authentication = {
     enable: true,
+    roles: false,
     module: 'keystone',
-    user: 'hugo',
-    password: 'hugo',
+    user: 'caio',
+    password: 'caio',
     domainName: 'figuardian',
     retries: 3,
     cacheTTLs: {

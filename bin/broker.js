@@ -35,8 +35,7 @@ function doActivate(newConfig) {
 
         registry = require('../lib/entity/entityRegistryMemory');
     }
-    
-    
+        
     var proxyObj = {
         server: null,
         adminServer: null,
@@ -45,7 +44,6 @@ function doActivate(newConfig) {
     
     config.setRegistry(registry);
     
-    console.log('Loading middlewares',proxyObj.middlewares);      
     module = require('../' + config.getConfig().middlewares.require);
 
     for (var i in  config.getConfig().middlewares.functions) {
