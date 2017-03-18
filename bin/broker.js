@@ -44,12 +44,14 @@ function doActivate(newConfig) {
     
     config.setRegistry(registry);
     
-    module = require('../' + config.getConfig().middlewares.require);
+    if(config.getConfig().middlewares && config.getConfig().middlewares.require){
+        module = require('../' + config.getConfig().middlewares.require);
 
-    for (var i in  config.getConfig().middlewares.functions) {
-        console.log(module[config.getConfig().middlewares.functions[i]]);
-        proxyObj.middlewares.push(module[config.getConfig().middlewares.functions[i]]);
-    }                 
+        for (var i in  config.getConfig().middlewares.functions) {
+            console.log(module[config.getConfig().middlewares.functions[i]]);
+            proxyObj.middlewares.push(module[config.getConfig().middlewares.functions[i]]);
+        }                 
+    }
     
     async.series([
         db.configureDb,
@@ -63,69 +65,4 @@ function doActivate(newConfig) {
     });    
 }
 
-function teste(){
-    var myCache = new NodeCache( { stdTTL: 100, checkperiod: 120 } );
-    var obj = { my: "Special", variable: 42 };
-    var obj1 = { my: "1111", variable: 1111 };
-    
-    myCache.set( "myKey", obj, function( err, success ){
-      if( !err && success ){
-        console.log( success );
-      }
-    });
-    
-    myCache.set( "myKey2", obj1, function( err, success ){
-      if( !err && success ){
-        console.log( success );
-      }
-    });        
-    
-    myCache.keys( function( err, mykeys ){
-      if( !err ){
-        console.log( " LIST " + mykeys );
-       // [ "all", "my", "keys", "foo", "bar" ] 
-      }
-    });
-    
-    try{
-        value = myCache.get("myKey", true );
-        console.log( "console mykey" + value.my + " " +value.variable );
-        
-    } catch( err ){
-        // ENOTFOUND: Key `not-existing-key` not found 
-    }    
-    
-    myCache.del( "myKey", function( err, count ){
-      if( !err ){
-        console.log("delete " + count ); // 1 
-      }
-    });
-    
-}
-
-function evento(){
-    waitingRequests.setMaxListeners(0);
-    waitingRequests.removeAllListeners('token');
-    console.log('removeAllListeners');
-
-    waitingRequests.addListener('token', function() {
-        console.log('bar');
-    });    
-    
-    waitingRequests.on('token', function() {
-        console.log('teste');
-    });   
-
-    waitingRequests.on('token', function() {
-        console.log('adele');
-    });       
-    
-    console.log('emiit before');
-    waitingRequests.emit("token");
-    console.log('emiit after');   
-}
-
-//evento();
-
-//teste();
 doActivate(config_file);
