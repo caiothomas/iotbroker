@@ -14,7 +14,7 @@
           "type": {
             "description": "Name of type of Entity",
             "type": "string",
-            "required": true            
+            "required": false            
           },
           "id": {
             "description": "Id of the target entity",

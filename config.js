@@ -96,7 +96,7 @@ config.authentication = {
 */
 
 config.authentication = {
-    enable: true,
+    enable: false,
     roles: false,
     module: 'keystone',
     user: 'caio',
@@ -130,13 +130,15 @@ config.dieOnRedirectError = false;
  */
 config.maxQueuedClients = 1000;
 
-
+/*
+Para inserir algum plugin
 config.middlewares = {
-    require: 'lib/plugins/figuardian',
+    require: 'lib/plugins/Module',
     functions: [
         'execute'
     ]
 };
+*/
 
 config.figuardian = {
     url: 'http://localhost/orion/figuardian.php',
