@@ -13,12 +13,12 @@ config.resource = {
         /**
          * Port where the proxied server is listening.
          */
-        port: 10026
+        port: 8080
     },
 
     broker: {
         
-        host: '10.15.177.5',
+        host: '192.168.1.9',
         
         /**
          * Port where the proxy is listening to redirect requests.
@@ -67,16 +67,16 @@ config.ssl = {
     /**
      * Key file to use for codifying the HTTPS requests. Only mandatory when the flag active is true.
      */
-    keyFile: 'certificados/key.pem',
+    keyFile: 'certificados/mqtt.key',
 
     /**
      * SSL Certificate to present to the clients. Only mandatory when the flag active is true.
      */
-    certFile: 'certificados/cert.pem',
+    certFile: 'certificados/mqtt.crt',
 
     ca: '',
     requestCert: true,
-    rejectUnauthorized: true     
+    rejectUnauthorized: false     
 }
 /*
 config.authentication = {
