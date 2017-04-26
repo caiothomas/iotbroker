@@ -13,7 +13,7 @@ config.resource = {
         /**
          * Port where the proxied server is listening.
          */
-        port: 8080
+        port: 10026
     },
 
     broker: {
