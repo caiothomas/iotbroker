@@ -18,12 +18,14 @@ config.resource = {
 
     broker: {
         
-        host: '192.168.1.9',
+        host: 'http://192.168.1.9',
         
         /**
          * Port where the proxy is listening to redirect requests.
          */
         port: 1026,
+        
+        portSSL: 1027,
 
         /**
          * Administration port for the proxy.
@@ -54,30 +56,35 @@ config.mongodb = {
     //replicaSet: ''
 };
 
-// Security configuration
-// http://how2ssl.com/articles/openssl_commands_and_tips/
-//--------------------------------------------------
 config.ssl = {
     /**
      * This flag activates the HTTPS protocol in the server. The endpoint always listen to the indicated port
      * independently of the chosen protocol.
      */
-    active: false,
+    active: true,
 
     /**
      * Key file to use for codifying the HTTPS requests. Only mandatory when the flag active is true.
      */
-    keyFile: 'certificados/mqtt.key',
+    keyFile: 'certificados/server/key.pem',
 
     /**
      * SSL Certificate to present to the clients. Only mandatory when the flag active is true.
      */
-    certFile: 'certificados/mqtt.crt',
+    certFile: 'certificados/server/cert.pem',
 
     ca: '',
-    requestCert: true,
-    rejectUnauthorized: false     
+    requestCert: false,
+    rejectUnauthorized: false                 
 }
+
+config.iotAgentSSL= {
+        active: true,
+        keyFile: 'certificados/server/key.pem',
+        certFile: 'certificados/server/cert.pem',
+        //ca: '',
+        rejectUnauthorized: false
+},
 /*
 config.authentication = {
     enable: true,
