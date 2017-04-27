@@ -103,7 +103,7 @@ config.authentication = {
 */
 
 config.authentication = {
-    enable: false,
+    enable: true,
     roles: false,
     module: 'keystone',
     user: 'caio',
@@ -124,6 +124,16 @@ config.authentication = {
         authPath: '/v3/auth/tokens'
     }
 };
+
+
+/**
+ * Configuration to remove entities which is expired.
+ * This duration  is defined in the Registration Context
+ */
+config.expiration = {
+    enable: true,
+    interval: 30000
+}
 
 /**
  * If this flag is activated, whenever the pepProxy is not able to redirect a request, instead of returning a 501 error
