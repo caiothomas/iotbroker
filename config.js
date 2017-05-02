@@ -18,6 +18,8 @@ config.resource = {
 
     broker: {
         
+        concat: true,//Concatenate response (true) or merge attributes (false)
+        
         host: 'http://192.168.1.9',
         
         /**
