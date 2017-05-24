@@ -87,7 +87,7 @@ config.iotAgentSSL= {
         //ca: '',
         rejectUnauthorized: false
 },
-/*
+
 config.authentication = {
     enable: true,
     module: 'figuardian',
@@ -102,8 +102,8 @@ config.authentication = {
         path: '/orion/token.php'
     }
 };
-*/
 
+/*
 config.authentication = {
     enable: true,
     roles: false,
@@ -126,7 +126,7 @@ config.authentication = {
         authPath: '/v3/auth/tokens'
     }
 };
-
+*/
 
 /**
  * Configuration to remove entities which is expired.
