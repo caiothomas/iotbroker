@@ -18,7 +18,7 @@ config.resource = {
 
     broker: {
         
-        concat: true,//Concatenate response (true) or merge attributes (false)
+        concat: false,//Concatenate response (true) or merge attributes (false)
         
         host: 'http://192.168.1.9',
         
@@ -81,7 +81,7 @@ config.ssl = {
 }
 
 config.iotAgentSSL= {
-        active: true,
+        active: false,
         keyFile: 'certificados/server/key.pem',
         certFile: 'certificados/server/cert.pem',
         //ca: '',
@@ -96,7 +96,7 @@ config.authentication = {
         users: 5,
     },
     options: {
-        protocol: 'http',
+        protocol: 'http://',
         host: 'localhost',
         port: 80,
         path: '/orion/token.php'
@@ -119,7 +119,7 @@ config.authentication = {
         validation: 120
     },
     options: {
-        protocol: 'http',
+        protocol: 'http://',
         host: 'localhost',
         port: 5000,
         path: '/v3/role_assignments',
