@@ -20,7 +20,7 @@ config.resource = {
         
         concat: false,//Concatenate response (true) or merge attributes (false)
         
-        host: 'http://192.168.1.9',
+        host: 'http://192.168.1.8',
         
         /**
          * Port where the proxy is listening to redirect requests.
@@ -48,12 +48,13 @@ config.resource = {
  *             from the 'mongoDb' configuration property.
  */
 config.EntityRegistry = {
-    type: 'memory'
+    type: 'mongodb'
 };
 
 config.mongodb = {
-    host: 'localhost',
-    port: '27017',
+    host: 'mongo',
+//    port: '27017',
+    port: '',
     db: 'iotbroker'
     //replicaSet: ''
 };
@@ -68,12 +69,12 @@ config.ssl = {
     /**
      * Key file to use for codifying the HTTPS requests. Only mandatory when the flag active is true.
      */
-    keyFile: 'certificados/server/key.pem',
+    keyFile: '/iotbroker/certificados/server/key.pem',
 
     /**
      * SSL Certificate to present to the clients. Only mandatory when the flag active is true.
      */
-    certFile: 'certificados/server/cert.pem',
+    certFile: '/iotbroker/certificados/server/cert.pem',
 
     ca: '',
     requestCert: false,
@@ -82,14 +83,14 @@ config.ssl = {
 
 config.iotAgentSSL= {
         active: false,
-        keyFile: 'certificados/server/key.pem',
-        certFile: 'certificados/server/cert.pem',
+        keyFile: '/iotbroker/certificados/server/key.pem',
+        certFile: '/iotbroker/certificados/server/cert.pem',
         //ca: '',
         rejectUnauthorized: false
 },
 
 config.authentication = {
-    enable: true,
+    enable: false,
     module: 'figuardian',
     retries: 3,
     cacheTTLs: {
@@ -133,7 +134,7 @@ config.authentication = {
  * This duration  is defined in the Registration Context
  */
 config.expiration = {
-    enable: true,
+    enable: false,
     interval: 30000
 }
 
@@ -163,9 +164,9 @@ config.figuardian = {
     url: 'http://localhost/orion/figuardian.php',
     ssl: {
         active: false,
-        keyFile: 'certificados/figuardian/key.pem',
-        certFile: 'certificados/figuardian/cert.pem',
-        ca: 'certificados/figuardian/cert.pem',
+        keyFile: '/iotbroker/certificados/figuardian/key.pem',
+        certFile: '/iotbroker/certificados/figuardian/cert.pem',
+        ca: '/iotbroker/certificados/figuardian/cert.pem',
         rejectUnauthorized: true
     }
 };

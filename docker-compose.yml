@@ -1,0 +1,14 @@
+version: '2'
+services:
+ mongo:
+  image: mongo:3.4
+ iotbroker:
+  image: iotbroker
+  build: .
+  ports:
+   - "1027:1027"
+   - "1026:1026"
+  links:
+   - mongo
+  depends_on:
+   - mongo
