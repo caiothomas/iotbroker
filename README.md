@@ -1,5 +1,5 @@
 IoT Broker
-===================
+==================
 
 - Performs aggregation and composition of IoT Agents;
 - Supports secure SSL/TLS communication and access control;
