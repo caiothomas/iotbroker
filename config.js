@@ -3,6 +3,7 @@ var config = {};
 // Protected Resource configuration
 //--------------------------------------------------
 // Configures the address of the component that is being proxied and the address of the proxy itself.
+
 config.resource = {
     original: {
         /**
