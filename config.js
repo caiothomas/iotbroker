@@ -6,14 +6,7 @@ var config = {};
 
 config.resource = {
     original: {
-        /**
-         * Host that is being proxied.
-         */
         host: 'localhost',
-
-        /**
-         * Port where the proxied server is listening.
-         */
         port: 10026
     },
 
