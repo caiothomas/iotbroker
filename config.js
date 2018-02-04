@@ -21,7 +21,7 @@ config.resource = {
         
         concat: false,//Concatenate response (true) or merge attributes (false)
         
-        host: 'http://192.168.1.8',
+        host: 'http://localhost',
         
         /**
          * Port where the proxy is listening to redirect requests.
